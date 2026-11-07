@@ -1,0 +1,49 @@
+[ {
+  "id" : "FIX-001",
+  "title" : "10 percent coupon gives wrong checkout total",
+  "reporter" : "neo254155",
+  "status" : "VERIFIED",
+  "proposal" : "CheckoutService.quote divides subtotalCents * couponPercent by 1000, applying one tenth of the intended percentage discount. Change only BigDecimal.valueOf(1000) to BigDecimal.valueOf(100) in CheckoutService.java, preserving HALF_UP cent rounding and validation. For 10000 cents and 10 percent, discount becomes 1000 and total becomes 9000 cents.",
+  "approvedBy" : "neo254155",
+  "sourceHash" : "6dc59655b51cc804f849b71039282a4953483c1e5c9d3967d911afa53cdeec29",
+  "protectedHash" : "8f41112d12d32a8934b3fe96990581c43c0af4e3e745d2891c7d24e2e52ea330",
+  "before" : {
+    "capturedAt" : "2026-11-07T12:57:29.134370500Z",
+    "exitCode" : 1,
+    "tests" : 8,
+    "failures" : 3,
+    "errors" : 0,
+    "skipped" : 0,
+    "logFile" : "C:\\Users\\Aditya\\Documents\\Codex\\2026-11-07\\s\\outputs\\FixRoom\\artifacts\\FIX-001\\before.log"
+  },
+  "after" : {
+    "capturedAt" : "2026-11-07T13:00:16.411421800Z",
+    "exitCode" : 0,
+    "tests" : 8,
+    "failures" : 0,
+    "errors" : 0,
+    "skipped" : 0,
+    "logFile" : "C:\\Users\\Aditya\\Documents\\Codex\\2026-11-07\\s\\outputs\\FixRoom\\artifacts\\FIX-001\\after.log"
+  },
+  "timeline" : [ {
+    "at" : "2026-11-07T12:57:09.492741600Z",
+    "action" : "OPEN",
+    "detail" : "neo254155: 10 percent coupon gives wrong checkout total"
+  }, {
+    "at" : "2026-11-07T12:57:29.159244600Z",
+    "action" : "REPRODUCED",
+    "detail" : "8 tests; 3 failures; 0 errors; 0 skipped; exit 1"
+  }, {
+    "at" : "2026-11-07T12:57:49.775821200Z",
+    "action" : "PROPOSED",
+    "detail" : "CheckoutService.quote divides subtotalCents * couponPercent by 1000, applying one tenth of the intended percentage discount. Change only BigDecimal.valueOf(1000) to BigDecimal.valueOf(100) in CheckoutService.java, preserving HALF_UP cent rounding and validation. For 10000 cents and 10 percent, discount becomes 1000 and total becomes 9000 cents."
+  }, {
+    "at" : "2026-11-07T12:59:32.505954Z",
+    "action" : "APPROVED",
+    "detail" : "Approval recorded for neo254155; source was unchanged at approval time"
+  }, {
+    "at" : "2026-11-07T13:00:16.430996Z",
+    "action" : "VERIFIED",
+    "detail" : "8 tests; 0 failures; 0 errors; 0 skipped; exit 0"
+  } ]
+} ]
