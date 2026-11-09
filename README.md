@@ -1,5 +1,30 @@
 # FixRoom
 
+Built **FixRoom** for the Flip the Switch Hackathon—a workflow for investigating and fixing bugs directly from Discord, with human approval before code changes.
+
+The technical flow:
+
+**Discord → Switch room → Codex agent → Spring Boot API → Maven/JUnit**
+
+A teammate reports a bug by mentioning the agent. Switch passes the conversation and room instructions to Codex, which investigates the repository and calls our local incident API.
+
+The backend tracks each incident through:
+`OPEN → REPRODUCED → AWAITING_APPROVAL → APPROVED → VERIFIED`
+
+The agent reproduces the failure, explains the cause, and proposes a correction. After an explicit `APPROVE FIX-001` message, it applies the change and reruns the original tests. Incident history, approval details, test logs, and the resolution report are saved locally.
+
+We demonstrated this with a seeded percentage-calculation bug: a 10% discount on 10,000 cents returned 9,900 instead of 9,000. The approved fix corrected the divisor, taking the checkout suite from **3 failures to all 8 tests passing**.
+
+**Stack:** Java, Spring Boot, Maven, JUnit, Codex, Switch, and Discord.
+
+[GitHub repository](https://github.com/neo254155-creator/fixroom)
+
+#HowISwitch #SpringBoot #Java #Hackathon #BuildInPublic
+
+---
+
+## Project documentation
+
 A human and a coding agent fix a Spring Boot checkout bug together in Discord, connected through Switch.
 
 **Report → real failing JUnit tests → proposed correction → human approval → source repair → passing tests and a saved resolution.**
